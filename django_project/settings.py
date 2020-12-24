@@ -85,7 +85,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'spring',
         'USER': 'root',
-        'PASSWORD': 'xzt991113',
+        'PASSWORD': '2020tcl',
         'HOST': 'localhost',
         'PORT': '3306',
     }
