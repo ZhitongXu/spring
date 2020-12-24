@@ -146,10 +146,8 @@ EMAIL_PORT = 25
 EMAIL_USE_TLS = True
 #EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 #EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
-EMAIL_HOST_USER = 'PreludeZ@163.com'
-EMAIL_HOST_PASSWORD = 'test321'
 
-DEFAULT_FROM_EMAIL = 'PreludeZ@163.com'
+DEFAULT_FROM_EMAIL = 'YourEmail@example.com'
 
 SOURCES_CHOICES = (
     ('Unknown', 'Unknown'),
