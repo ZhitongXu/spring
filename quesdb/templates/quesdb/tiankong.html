@@ -1,0 +1,44 @@
+{% extends "blog/base.html" %}
+
+{% block title %}
+<title>你的题目</title>
+{% endblock %}
+
+{% block content %}
+    <div class = "card">
+        <div class = "card-header">你的填空题</div>
+
+        <div class = "card-body">
+        </br>
+        {% for i in t %}
+            <b>{{ i.tquizno }}</b>
+            <p>{{ i.tquizcontent}}</p>
+        {% endfor%}
+            </br>
+            <form  action="{{ url }}" method="post">
+                {% csrf_token %}
+                <input type="hidden" id="abc" name="abc" value="0">
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">修改</span>
+                </div>
+                <input id="tquizno" type="text" name="tquizno" class="form-control" placeholder="请输入题号" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <input type="submit" class="btn btn-outline-primary" name="submit1"class="btn btn-info" value="修改" onclick="this.form.abc.value='1'">
+                </div>
+            </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">删除</span>
+                        </div>
+                    <input id="del_tquizno" name = "del_tquizno" type="text" class="form-control" placeholder="请输入题号" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                        <input type="submit" class="btn btn-outline-primary" name="submit1"class="btn btn-info" value="删除" onclick="this.form.abc.value='2'">
+                        <!--<button class="btn btn-outline-primary" type="button" color="#FFC0CB" onclick="this.form.abc.value='2'>提交</button>-->
+                        </div>
+                    </div>
+                </form>
+            </div>
+    </div>
+{% endblock %}

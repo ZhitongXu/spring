@@ -1,0 +1,29 @@
+{% extends "blog/base.html" %}
+{% block title %}
+<title>查询</title>
+{% endblock %}
+{% block content %}
+
+<div class="card mb-4">
+  <img class="card-img-top" src="/media/love.jpg" alt="Card image cap">
+  <div class="card-body">
+    <h4 class="card-title">我在寻你</h4>
+    <p class="card-text">草在结它的种子，风在摇它的叶子<br>我们站着，不说话，就十分美好</p>
+    <p class="card-text"><small class="text-muted">找啊找啊找朋友，找到一个好朋友；敬个礼啊握个手，你是我的好朋友</small></p>
+  </div>
+  <hr>
+  <form  action="{{ url }}" method="post">
+    {% csrf_token %}
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">账号</span>
+            </div>
+            <input id="id" type="text" name="id" class="form-control" placeholder="请输入要查询的账号" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+            <button class="btn btn-outline-primary" type="submit" color="#FFC0CB">查询</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

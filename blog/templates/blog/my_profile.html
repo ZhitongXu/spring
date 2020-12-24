@@ -1,0 +1,119 @@
+{% extends "blog/base.html" %}
+{% load likes_tags %}
+{%  block content %}
+    <div class="card-deck">
+        <div class="card">
+            <div class="card-body">
+                <img src="{{ user.profile.image.url }}" alt="" class="img-thumbnail mx-auto d-block">
+                <div class="card-body">
+                    <h4 class="card-title text-center">{{ user.username }}</h4>
+                    <ul class="list-group">
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Email
+                        <span class="badge badge-info badge-pill">{{ user.email }}</span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        id
+                        <span class="badge badge-warning badge-pill">{{ user.id }}</span>
+                      </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="like" onclick="likeChange(this, 'User', {{ user.pk }})">
+                    <button type="button" class="btn btn-default" {% get_like_status user %}></button>
+                    <span class="liked-num">{% get_like_count user %}</span>
+                    <span>Likes</span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Info</h4>
+                <ul class="list-group">
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Age
+                    <span class="badge badge-primary badge-pill">{{ user.profile.age }}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Gender
+                    <span class="badge badge-success badge-pill">{{ user.profile.gender }}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Into
+                    <span class="badge badge-danger badge-pill">{{ user.profile.gender }}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Birth
+                    <span class="badge badge-light badge-pill">{{ user.profile.birth }}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Region
+                    <span class="badge badge-warning badge-pill">{{ user.profile.region }}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    School
+                    <span class="badge badge-dark badge-pill">{{ user.profile.school }}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Major
+                    <span class="badge badge-primary badge-pill">{{ user.profile.major }}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Status
+                    <span class="badge badge-success badge-pill">{{ user.profile.status }}</span>
+                  </li>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Tags
+                    {% for tag in user.profile.tags.all %}
+                        <span class="badge badge-danger badge-pill"> {{ tag }} </span>
+                    {% endfor %}
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Categories
+                    <span class="badge badge-info badge-pill">{{ category }}</span>
+                  </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+{% block script_extends %}
+    <script type="text/javascript">
+        function likeChange(obj, content_type, object_id) {
+            var is_like = obj.getElementsByClassName('active').length == 0
+            $.ajax({
+                url: "{% url 'like_change' %}",
+                type: 'GET',
+                data: {
+                    content_type: content_type,
+                    object_id: object_id,
+                    is_like: is_like,
+                },
+                cache: false,
+                success: function(data) {
+                  console.log(data)
+                  if(data['status'] == 'SUCCESS'){
+                      var element = $(obj.getElementsByClassName('btn'));
+
+                      if (is_like){
+                            element.addClass('active');
+                      }else{
+                          element.removeClass('active');
+                      }
+
+                       var liked_num = $(obj.getElementsByClassName('liked-num'));
+                       liked_num.text(data['liked_num']);
+                  }else{
+                      alert(data['message']);
+                  }
+                },
+                error: function(xhr) {
+                  console.log(xhr)
+                }
+            });
+
+        }
+    </script>
+{% endblock %}

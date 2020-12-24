@@ -1,0 +1,82 @@
+{% extends "quesdb/base.html" %}
+{% block title %}
+<title>首页</title>
+{% endblock %}
+{% block content %}
+
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>我的天哪！</strong> 高分榜上的怕不都是一些神仙吧！
+      <button class="btn btn-outline-warning" onclick="window.location.href = '/excellentscore/'">前去瞧瞧</button>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="card-group">
+      <div class="card">
+        <img class="card-img-top" src="/media/00.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">查看题目</h5>
+          <p class="card-text">来看看已有的题目吧</p>
+          <p class="card-text"><small class="text-muted">古灵精怪</small></p>
+          <button class="btn btn-outline-primary" onclick="window.location.href = '/newTorS/'">查看题目</button>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="/media/01.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">我要出题</h5>
+          <p class="card-text">还要出新题，还要</p>
+          <p class="card-text"><small class="text-muted">天马行空</small></p>
+          <button class="btn btn-outline-primary" onclick="window.location.href = '/addTorS/'" >我要出题</button>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="/media/02.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">我要刷题</h5>
+          <p class="card-text">一天不刷题，自己知道</p>
+          <p class="card-text"><small class="text-muted">独孤求败</small></p>
+          <button class="btn btn-outline-primary" onclick="window.location.href = '/searchfortest/'" >我要刷题</button>
+
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="card-group">
+      <div class="card">
+        <img class="card-img-top" src="/media/10.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">我要评分</h5>
+          <p class="card-text">掌握别人命运的时刻</p>
+          <p class="card-text"><small class="text-muted">实事求是</small></p>
+          <button class="btn btn-outline-primary" onclick="window.location.href = '/givescore/'" >我要评分</button>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="/media/11.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">答题人分数</h5>
+          <p class="card-text">我给别人打了多少分呢</p>
+          <p class="card-text"><small class="text-muted">辣手摧花</small></p>
+          <button class="btn btn-outline-primary" onclick="window.location.href = '/otherscore/'" >查看</button>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="/media/12.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">我的分数</h5>
+          <p class="card-text">我竟然有这种分数？！</p>
+          <p class="card-text"><small class="text-muted">小鹿乱撞</small></p>
+          <button class="btn btn-outline-primary" onclick="window.location.href = '/myscore/'" >查看</button>
+        </div>
+      </div>
+    </div>
+    <hr>
+
+
+
+{% endblock %}
+

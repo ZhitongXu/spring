@@ -1,0 +1,119 @@
+{% extends "blog/base.html" %}
+{% block title %}
+<title>修改题目</title>
+{% endblock %}
+{% block content %}
+{% csrf_token %}
+{% if s_squiz %}
+
+
+<div class = "card">
+    <div class = "card-body">
+        {% if s_squiz %}
+            <div class = "card-header">
+                <h4>{{ s_squiz.squizno }} &nbsp {{ s_squiz.scontent }}</h4>
+            </div>
+            <br>
+            <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="Radios1" id="Radios1" value="option3" disabled>
+                <label class="form-check-label" for="exampleRadios3" style="font-size:18px">
+                    A.{{s_squiz.a}}
+                </label>
+            </div>
+
+            <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="Radios2" id="Radios2" value="option3" disabled>
+                <label class="form-check-label" for="exampleRadios3" style="font-size:18px">
+                    B.{{s_squiz.b}}
+                </label>
+            </div>
+
+            <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="Radios3" id="Radios3" value="option3" disabled>
+                <label class="form-check-label" for="exampleRadios3" style="font-size:18px">
+                    C.{{s_squiz.c}}
+                </label>
+            </div>
+
+            <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="Radios4" id="Radios4" value="option3" disabled>
+                <label class="form-check-label" for="exampleRadios3" style="font-size:18px">
+                    D.{{i.d}}
+                </label>
+            </div>
+
+            <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="Radios5" id="Radios5" value="option3" disabled>
+                <label class="form-check-label" for="exampleRadios3" style="font-size:18px">
+                    E.{{s_squiz.d}}
+                </label>
+            </div>
+            <hr><br>
+      {% endif %}
+    </div>
+</div>
+
+<hr>
+
+<form  action="{{ url }}" method="post">
+{% csrf_token %}
+
+<div class="card">
+    <div class = "card-header">
+        <h4>你的修改</h4>
+    </div>
+
+    <div class = "card-body">
+        <div class="input-group input-group-lg">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-lg">题干</span>
+            </div>
+            <input id="scontent" name="scontent" type="text" class="form-control" placeholder="请输入您的选择题题干：">
+        </div>
+
+        <hr>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">A.</span>
+            </div>
+            <input id="a" name="a" type="text" class="form-control" placeholder="请输入选项A的答案：">
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon2">B.</span>
+            </div>
+            <input id="b" name="b" type="text" class="form-control" placeholder="请输入选项B的答案：">
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">C.</span>
+            </div>
+            <input id="c" name="c" type="text" class="form-control" placeholder="请输入选项C的答案：">
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon4">D.</span>
+            </div>
+            <input id="d" name="d" type="text" class="form-control" placeholder="请输入选项D的答案：">
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon5">E.</span>
+            </div>
+            <input id="e" name="e" type="text" class="form-control" placeholder="请输入选项E的答案：">
+        </div>
+
+        <button type='submit' class="btn btn-info" >提交</button>
+
+
+        </div>
+    </div>
+
+</form>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "blog/base.html" %}
+{% block title %}
+<title>选择题题目</title>
+{% endblock %}
+{% block content %}
+
+<div class = "card">
+    <div class = "card-body">
+        {% for i in s %}
+            <div class = "card-header">
+                <h4>{{ i.squizno }}&nbsp{{ i.scontent}}</h4>
+            </div>
+            <br>
+            <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="Radios1" id="Radios1" value="option3" disabled>
+                <label class="form-check-label" for="exampleRadios3" style="font-size:18px">
+                    A.{{i.a}}
+                </label>
+            </div>
+
+            <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="Radios2" id="Radios2" value="option3" disabled>
+                <label class="form-check-label" for="exampleRadios3" style="font-size:18px">
+                    B.{{i.b}}
+                </label>
+            </div>
+
+            <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="Radios3" id="Radios3" value="option3" disabled>
+                <label class="form-check-label" for="exampleRadios3" style="font-size:18px">
+                    C.{{i.c}}
+                </label>
+            </div>
+
+            <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="Radios4" id="Radios4" value="option3" disabled>
+                <label class="form-check-label" for="exampleRadios3" style="font-size:18px">
+                    D.{{i.d}}
+                </label>
+            </div>
+
+            <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="Radios5" id="Radios5" value="option3" disabled>
+                <label class="form-check-label" for="exampleRadios3" style="font-size:18px">
+                    E.{{i.e}}
+                </label>
+            </div>
+            <hr><br>
+        {% endfor%}
+
+    </div>
+
+    <form  action="{{ url }}" method="post">
+        {% csrf_token %}
+            <input type="hidden" id="abc" name="abc" value="0">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">题号</span>
+                </div>
+                <input id="squizno" type="text" name="squizno" class="form-control" placeholder="请输入您想要修改的题号" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <input type="submit" name="submit1"class="btn btn-outline-primary" value="修改" onclick="this.form.abc.value='1'">
+                </div>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">题号</span>
+                </div>
+                <input id="del_squizno" type="text" name="del_squizno" class="form-control" placeholder="请输入您想要删除的题号" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <input type="submit" name="submit1"class="btn btn-outline-primary" value="删除" onclick="this.form.abc.value='2'">
+                </div>
+            </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

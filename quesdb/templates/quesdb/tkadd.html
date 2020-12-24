@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% extends "blog/base.html" %}
+{% block title %}
+    <title>添加题目</title>
+{% endblock %}
+
+{% block content %}
+{% csrf_token %}
+<div class = "card">
+    <div class = "card-header">
+        添加填空题
+    </div>
+    <div class = "card-body">
+        </br>
+        <h4 class = "card-title">
+            请输入新添加的填空题题干
+        </h4>
+        </br>
+        <form action="{{ url }}" method="post">
+            {% csrf_token %}
+        <div class="input-group mb-3">
+            <input id="tquizcontent" type="text" name="tquizcontent" class="form-control" placeholder="我是不是你的小可爱" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+            <button class="btn btn-outline-primary" type="submit">提交</button>
+            </div>
+        </div>
+        </form>
+    </div>
+    </div>
+{% endblock %}

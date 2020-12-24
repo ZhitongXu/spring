@@ -1,0 +1,31 @@
+{% extends "blog/base.html" %}
+
+{% block title %}
+<title>修改题目</title>
+{% endblock %}
+
+{% block content %}
+     <div class = "card">
+         <div class = "card-header">修改填空题</div>
+
+         <div class = "card-body">
+         </br>
+             {% csrf_token %}
+             {% if t_tquiz %}
+                 <h5>原题干</h5>
+                 <br>
+                 <div>{{t_tquiz.tquizcontent}}</div>
+                 <br>
+            <form  action="{{ url }}" method="post">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+                <input id="tquizcontent" type="text" name="tquizcontent" class="form-control" placeholder="请输入新题干" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <input type="submit" class="btn btn-outline-primary" name="submit1"class="btn btn-info" value="修改"">
+                </div>
+                </div>
+            </form>
+             {% endif %}
+         </div>
+     </div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "quesdb/base.html" %}
+{% block title %}
+<title>选择修改的题目类型</title>
+{% endblock %}
+{% block content %}
+
+<div class="card mb-3" style="max-width: 130x;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="/media/america.jpg" class="card-img" >
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">要看选择题！</h5>
+        <p class="card-text">记性很好：我出了哪些选择题辽？</p>
+        <p class="card-text"><small class="text-muted">若无闲事挂心头</small></p>
+        <button type="button" class="btn btn-outline-success" onclick="window.location.href = '/select/'">选择题</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mb-3" style="max-width: 180x;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="/media/ironman.jpg" class="card-img" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">要看填空题！</h5>
+        <p class="card-text">忘性很大：我出了这些选择题了~</p>
+        <p class="card-text"><small class="text-muted">便是人间好时节</small></p>
+        <button type="button" class="btn btn-outline-success" onclick="window.location.href = '/tiankong/'">填空题</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mb-3" style="max-width: 180x;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="/media/shock.jpg" class="card-img" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">要回首页嘤！</h5>
+        <p class="card-text">抬手挺胸阔步走，掌声送给单身狗</p>
+        <p class="card-text"><small class="text-muted">回头是岸</small></p>
+        <button type="button" class="btn btn-outline-success" onclick="window.location.href = '/first/'">打道回府</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

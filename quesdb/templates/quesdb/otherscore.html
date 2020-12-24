@@ -1,0 +1,34 @@
+{% extends "quesdb/base.html" %}
+{% block title %}
+<title>评分</title>
+{% endblock %}
+{% block content %}
+<div class="card text-center">
+	<div class="card-header">
+		<h4>答题者得分情况</h4>
+	</div>
+	<div class="card-body">
+    	{% if s_score %}
+		    <table class="table table-hover">
+		  <thead>
+		    <tr>
+		      <th>答题者昵称</th>
+		      <th>TA的得分</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	{% for i in s_score %}
+		  		<tr>
+		      		<td>{{i.respondent__username}}</td>
+		      		<td>{{i.score}}</td>
+		    	</tr>
+		    {% endfor %}
+		  </tbody>
+		</table>
+    	{% endif %}
+    </div>
+	<button onclick="window.location.href = '/first/'" type="button" class="btn btn-outline-warning">Warning</button>
+
+</div>
+{% endblock %}
+

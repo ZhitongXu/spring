@@ -1,0 +1,72 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{%  block content %}
+    <article class="media content-section">
+      <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+      <div class="media-body">
+        <div class="article-metadata" style="max-height: 130px;">
+          <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
+          <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+           <span>
+           {% if post.author.profile.tags.first != None %}
+            {% for tag in post.author.profile.tags.all %}
+
+             <a href=# class="badge badge-secondary" >
+                {{ tag }}
+             </a>
+            {% endfor %}
+            {% endif %}
+           </span>
+          {% if post.author == user %}
+              <div>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' post.id %}">Update</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' post.id %}">Delete</a>
+              </div>
+          {% endif %}
+        </div>
+        <h2 class="article-title">{{ post.title }}</h2>
+        <p class="article-content">{{ post.content }}</p>
+      </div>
+        </article>
+    <div class="col-md-13">
+    <div class="alert alert-success" role="alert">
+        {% with comments.count as total_comments %}
+            <h5>
+                {{ total_comments }} comment{{ total_comments|pluralize }}
+            </h5>
+        {% endwith %}
+        {% for comment in comments %}
+            <small>
+                <p class="info">
+                    Comment {{ forloop.counter }} by {{ comment.name }}
+                    {{ comment.created }}
+                </p>
+                {{ comment.body|linebreaks }}
+            </small>
+        {% empty %}
+            <p>There are no comments yet.</p>
+        {% endfor %}
+    </div>
+    </div>
+    {% if post.author != user %}
+        <div class = "row">
+        <div class="col-md-8">
+        {% if new_comment %}
+            <div class="comment">
+            <div class="card-body">
+                Your comment has been added.
+            </div>
+            </div>
+        {% else %}
+            <h4>Add a new comment:</h4>
+            <form action="." method="post">
+                {% csrf_token %}
+                {{ comment_form|crispy }}
+
+                <button type="Submit" class="btn btn-outline-primary">Submit</button>
+            </form>
+        {% endif %}
+    </div>
+        </div>
+    {% endif %}
+{% endblock content %}

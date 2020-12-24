@@ -1,0 +1,104 @@
+{% extends "quesdb/base.html" %}
+
+{% block title %}
+<title>评分</title>
+{% endblock %}
+
+{% block content %}
+{% csrf_token %}
+    <h4>
+    我的题目
+    </h4>
+    <br>
+ {% if s_squiz %}
+<div class = "card">
+    <div class = "card-header">
+        <h5>
+            选择题
+        </h5>
+    </div>
+
+    <div class = "card-body">
+        {% for i in s_squiz %}
+        <h6>{{ i.squizno }}&nbsp{{ i.scontent }}</h6>
+            <input type="checkbox" value="A" name="check_box_list"disabled/>&nbspA. {{i.a}}<br>
+            <input type="checkbox" value="B" name="check_box_list"disabled/>&nbspB. {{i.b}}<br>
+            <input type="checkbox" value="C" name="check_box_list"disabled/>&nbspC. {{i.c}}<br>
+            <input type="checkbox" value="D" name="check_box_list"disabled/>&nbspD. {{i.d}}<br>
+            <input type="checkbox" value="E" name="check_box_list"disabled/>&nbspE. {{i.e}}<br>
+            <br>
+        {% endfor %}
+    </div>
+</div>
+ {% endif %}
+ <br>
+ {% if t_tquiz %}
+ <div class = "card">
+    <div class = "card-header">
+        <h5>
+            填空题
+        </h5>
+    </div>
+
+    <div class = "card-body">
+        {% for i in t_tquiz %}
+        <h6>{{ i.tquizno }} {{ i.tquizcontent }}</h6>
+        <br>
+        {% endfor %}
+    </div>
+ </div>
+ {% endif %}
+<br>
+    <h4>
+        Ta的回答
+    </h4>
+
+    <br>
+ {% if s_sanswer %}
+ <div class = "card">
+    <div class = "card-header">
+        <h5>
+            选择题
+        </h5>
+    </div>
+
+    <div class = "card-body">
+        {% for i in s_sanswer %}
+        <h6>{{i.qno_id}}&nbsp&nbsp{{i.ssolution}}</h6>
+        {% endfor %}
+    </div>
+ </div>
+ {% endif %}
+
+    {% if t_tanswer %}
+ <div class = "card">
+    <div class = "card-header">
+        <h5>
+            填空题
+        </h5>
+    </div>
+
+    <div class = "card-body">
+        {% for i in t_tanswer %}
+        <h6>{{i.qno_id}}&nbsp&nbsp{{i.tsolution}}</h6>
+        {% endfor %}
+    </div>
+ </div>
+ {% endif %}
+
+    <br>
+
+<form  action="{{ url }}" method="post">
+        {% csrf_token %}
+
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text">我的评分</span>
+    </div>
+    <input id="tquizno" type="text" name="score" class="form-control" placeholder="给TA打多少分呢" aria-describedby="basic-addon2">
+    <div class="input-group-append">
+        <input type="submit" class="btn btn-outline-primary"class="btn btn-info" value="提交">
+    </div>
+</div>
+     </form>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "quesdb/base.html" %}
+{% block title %}
+<title>排行榜</title>
+{% endblock %}
+{% block content %}
+<div class="card text-center">
+	<div class="card-header">
+		<h4>排行榜</h4>
+	</div>
+	<div class="card-body">
+    	{% if avg_score %}
+		    <table class="table table-hover">
+		  <thead>
+		    <tr>
+		      <th>答题者昵称</th>
+		      <th>TA的平均分</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	{% for i in show_avg %}
+		  		<tr>
+		      		<td>{{i.nickname}}</td>
+		      		<td>{{i.score}}</td>
+		    	</tr>
+		    {% endfor %}
+		  </tbody>
+		</table>
+    	{% endif %}
+    </div>
+	<button onclick="window.location.href = '/first/'" type="button" class="btn btn-outline-warning">Warning</button>
+</div>
+{% endblock %}

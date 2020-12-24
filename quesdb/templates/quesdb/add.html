@@ -1,0 +1,68 @@
+{% extends "quesdb/base.html" %}
+{% block title %}
+<title>添加题目</title>
+{% endblock %}
+{% block content %}
+<form  action="{{ url }}" method="post">
+{% csrf_token %}
+
+<div class="card">
+    <div class = "card-header">
+        <h4>新·选择题</h4>
+    </div>
+
+    <div class = "card-body">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">题干</span>
+            </div>
+            <input id="scontent" name="scontent" type="text" class="form-control" placeholder="请输入题干：">
+        </div>
+
+        <hr>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">A.</span>
+            </div>
+            <input id="a" name="a" type="text" class="form-control" placeholder="请输入选项A的答案：">
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon2">B.</span>
+            </div>
+            <input id="b" name="b" type="text" class="form-control" placeholder="请输入选项B的答案：">
+        </div>
+        
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">C.</span>
+            </div>
+            <input id="c" name="c" type="text" class="form-control" placeholder="请输入选项C的答案：">
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon4">D.</span>
+            </div>
+            <input id="d" name="d" type="text" class="form-control" placeholder="请输入选项D的答案：">
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon5">E.</span>
+            </div>
+            <input id="e" name="e" type="text" class="form-control" placeholder="请输入选项E的答案：">
+        </div>
+
+        <button type='submit' class="btn btn-info" >提交</button>
+      
+
+        </div>
+    </div>
+
+</form>
+
+{% csrf_token %}
+{% endblock %}

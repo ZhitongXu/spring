@@ -1,0 +1,29 @@
+{% extends "quesdb/base.html" %}
+
+{% block title %}
+<title>评分</title>
+{% endblock %}
+
+{% block content %}
+    <div class = "card">
+        <div class = "card-header">谁答了我的题</div>
+
+        <div class = "card-body">
+        {% for i in s_result %}
+        <p>{{ i.respondent_id }} {{ i.respondent}} </p>
+        {% endfor %}
+        <form  action="{{ url }}" method="post">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">查询</span>
+                </div>
+                <input id="tquizno" type="text" name="responder" class="form-control" placeholder="哪个小可爱答了我的题" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <input type="submit" class="btn btn-outline-primary" name="submit1"class="btn btn-info" value="提交">
+                </div>
+        </div>
+     </form>
+        </div>
+    </div>
+{% endblock %}

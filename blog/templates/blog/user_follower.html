@@ -1,0 +1,54 @@
+{% extends "blog/base.html" %}
+{%  block content %}
+ <div class="card-deck">
+{% for follower in followers %}
+    <div class = "row">
+    <div class="col-md-12 col-sm-offset-8">
+    <div class="card">
+        <div class="card-body">
+        <img src="{{ follower.profile.image.url }}" class="img-thumbnail mx-auto d-block" alt="">
+        <div class="card-body">
+
+                <li class="list-group-item list-group-item-light">
+                    <span>
+                         <a href="{% url 'user-posts' follower.username %}" class="badge badge-warning" >
+                            {{ follower.username }}
+                         </a>
+                    </span>
+                    <small>ID: {{ follower.id }}</small>
+                </li>
+                {% if follower.profile.tags.first != None %}
+                <li class="list-group-item list-group-item-light">
+
+
+                    <span>
+
+                        {% for tag in follower.profile.tags.all %}
+
+                         <a href=# class="badge badge-info" >
+                            {{ tag }}
+                         </a>
+
+                        {% endfor %}
+
+                    </span>
+                </li>
+                {% endif %}
+
+                <li class="list-group-item list-group-item-light">
+                    <span>
+                         <a href="{% url 'user-posts' follower.username %}" class="badge badge-danger" >
+                            Email
+                         </a>
+                    </span>
+                    <small>{{ user.email }}</small>
+                </li>
+
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}

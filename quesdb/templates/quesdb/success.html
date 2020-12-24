@@ -1,0 +1,31 @@
+{% extends "blog/base.html" %}
+{% block title %}
+<title>操作成功</title>
+{% endblock %}
+{% block content %}
+    <div class = "media">
+        <img class="align-self-center mr-3" src="/media/success.png">
+        <div class="media-body">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h3>
+                {{ request.session.success }}！
+            </h3>
+        </div>
+        <div align="right" style="position:relative;top:10px">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <button class="btn btn-outline-primary" onclick="window.location.href = '/first/'" >返回首页</button>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "quesdb/base.html" %}
+
+{% block title %}
+<title>查询</title>
+{% endblock %}
+
+{% block content %}
+<form  action="{{ url }}" method="post">
+{% csrf_token %}
+
+    {% if s %}
+<div class = "card">
+    <div class = "card-header">
+        <h5>选择题</h5>
+    </div>
+
+    <div class = "card-body">
+        {% for i in s %}
+        <h6>{{ i.squizno }}&nbsp{{ i.scontent }}</h6>
+            <input type="checkbox" value="A" name="check_box_list"/>&nbspA. {{i.a}}<br>
+            <input type="checkbox" value="B" name="check_box_list"/>&nbspB. {{i.b}}<br>
+            <input type="checkbox" value="C" name="check_box_list"/>&nbspC. {{i.c}}<br>
+            <input type="checkbox" value="D" name="check_box_list"/>&nbspD. {{i.d}}<br>
+            <input type="checkbox" value="E" name="check_box_list"/>&nbspE. {{i.e}}<br>
+            <br>
+        {% endfor %}
+    </div>
+</div>
+    {% endif %}
+<br>
+    {% if t %}
+<div class = "card">
+    <div class = "card-header">
+        <h5>填空题</h5>
+    </div>
+
+    <div class = "card-body">
+        {% for i in t %}
+             <h6>{{ i.tquizno }} {{ i.tquizcontent }}</h6>
+             <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">答案</span>
+                </div>
+                <input id="tquizno" type="text" name='tsolution' class="form-control" placeholder="请输入答案" aria-describedby="basic-addon2">
+            </div>
+        {% endfor %}
+    </div>
+</div>
+    {% endif %}
+    <div align="right" style="position:relative;top:10px">
+        <button class="btn btn-outline-primary" name = 'save'>提交</button>
+    </div>
+</form>
+{% endblock %}
